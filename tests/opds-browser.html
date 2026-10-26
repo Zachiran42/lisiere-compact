@@ -1,0 +1,15 @@
+<!doctype html><html lang="fr"><meta charset="utf-8"><title>Vérifications OPDS Lisière</title><h1>Vérifications OPDS</h1><pre id="results">En cours…</pre>
+<script src="/web/features/gutenberg.js"></script><script>
+(async()=>{
+ const log=[],pg=LisiereGutenberg;
+ function check(name,fn){try{fn();log.push('PASS '+name)}catch(error){log.push('FAIL '+name+': '+error.message)}}
+ const base='https://www.gutenberg.org/ebooks/search.opds/';
+ const feed='<?xml version="1.0"?><feed xmlns="http://www.w3.org/2005/Atom"><link rel="next" href="/ebooks/search.opds/?query=l.fr&amp;start_index=26"/><entry><title>A &amp; B &lt;script&gt;</title><content>Autrice</content><link rel="subsection" href="/ebooks/12.opds"/></entry></feed>';
+ check('titres encodés conservés comme texte',()=>{const f=pg.parseFeed(feed,base);if(f.entries[0].title!=='A & B <script>'||f.entries[0].author!=='Autrice')throw Error('Métadonnées');});
+ check('pagination relative du catalogue',()=>{if(!pg.parseFeed(feed,base).next.endsWith('start_index=26'))throw Error('Pagination');});
+ const detail='<feed xmlns="http://www.w3.org/2005/Atom"><entry><title>Livre</title><rights>Public domain in the USA.</rights><link rel="http://opds-spec.org/acquisition" type="application/epub+zip" href="/ebooks/12.epub.noimages"/></entry><entry><title>Livre</title><rights>Public domain in the USA.</rights><link rel="http://opds-spec.org/acquisition" type="application/epub+zip" href="/ebooks/12.epub3.images"/></entry></feed>';
+ check('sélection EPUB 3 et droits',()=>{const f=pg.parseFeed(detail,base);if(!f.acquisition.url.endsWith('12.epub3.images')||f.acquisition.rights!=='Public domain in the USA.')throw Error('Format');});
+ for(const [label,xml] of [['XML invalide','<feed><entry>'],['DOCTYPE','<!DOCTYPE feed [<!ENTITY a "b">]><feed/>'],['lien externe',feed.replace('/ebooks/12.opds','https://evil.test/ebooks/12.opds')]])check('rejet '+label,()=>{let failed=false;try{pg.parseFeed(xml,base)}catch{failed=true}if(!failed)throw Error('Accepté');});
+ document.getElementById('results').textContent=log.join('\n');
+})();
+</script></html>
