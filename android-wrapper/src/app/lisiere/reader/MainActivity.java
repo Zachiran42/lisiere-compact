@@ -23,8 +23,9 @@ import android.widget.Toast;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.util.Collections;
+import java.util.LinkedHashSet;
 
-/** Minimal offline host: the entire React application is a bundled HTML asset. */
+/** Bundled reader with a narrowly scoped Gutenberg download transport. */
 public final class MainActivity extends Activity {
     private static final String LOCAL_ORIGIN = "https://appassets.androidplatform.net";
     private static final String START_URL = LOCAL_ORIGIN + "/index.html";
@@ -85,12 +86,31 @@ public final class MainActivity extends Activity {
                         return denied();
                     }
                 }
-                // No external resource is ever fetched; the APK has no INTERNET permission.
+                if ("https".equals(scheme) && "appassets.androidplatform.net".equals(uri.getHost())
+                        && "/gutenberg".equals(uri.getPath()) && "GET".equals(request.getMethod())) {
+                    try {
+                        GutenbergClient.Result result = GutenbergClient.fetch(uri.getQueryParameter("url"));
+                        return new WebResourceResponse(result.mime, "UTF-8", 200, "OK",
+                            Collections.singletonMap("Cache-Control", "no-store"), new ByteArrayInputStream(result.bytes));
+                    } catch (Exception error) {
+                        return new WebResourceResponse("text/plain", "UTF-8", 502, "Bad Gateway",
+                            Collections.emptyMap(), new ByteArrayInputStream(new byte[0]));
+                    }
+                }
+                // Book resources and arbitrary external hosts remain blocked.
                 return denied();
             }
             @Override public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
                 if (!request.isForMainFrame()) return false;
-                return !START_URL.equals(request.getUrl().toString());
+                Uri target = request.getUrl();
+                if ("https".equals(target.getScheme()) && "www.gutenberg.org".equals(target.getHost())
+                        && target.getPort() == -1 && target.getUserInfo() == null
+                        && target.getPath() != null && target.getPath().matches("/ebooks/[0-9]+")) {
+                    try { startActivity(new Intent(Intent.ACTION_VIEW, target)); }
+                    catch (ActivityNotFoundException error) { Toast.makeText(MainActivity.this, "Aucun navigateur disponible.", Toast.LENGTH_SHORT).show(); }
+                    return true;
+                }
+                return !START_URL.equals(target.toString());
             }
         });
         webView.setWebChromeClient(new WebChromeClient() {
@@ -102,7 +122,7 @@ public final class MainActivity extends Activity {
                 // Some providers identify EPUB as application/zip or application/octet-stream.
                 // The app validates the .epub extension and actual archive after selection.
                 intent.setType("*/*");
-                intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, false);
+                intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, params.getMode() == WebChromeClient.FileChooserParams.MODE_OPEN_MULTIPLE);
                 intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
                 try {
                     startActivityForResult(intent, OPEN_EPUB);
@@ -126,14 +146,19 @@ public final class MainActivity extends Activity {
     @Override protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode != OPEN_EPUB || pendingFiles == null) return;
-        Uri uri = resultCode == RESULT_OK && data != null ? data.getData() : null;
-        if (uri == null && resultCode == RESULT_OK && data != null
-                && data.getClipData() != null && data.getClipData().getItemCount() > 0) {
-            uri = data.getClipData().getItemAt(0).getUri();
+        LinkedHashSet<Uri> selected = new LinkedHashSet<>();
+        if (resultCode == RESULT_OK && data != null) {
+            if (data.getClipData() != null) {
+                for (int index = 0; index < data.getClipData().getItemCount(); index++) {
+                    Uri uri = data.getClipData().getItemAt(index).getUri();
+                    if (uri != null) selected.add(uri);
+                }
+            }
+            if (data.getData() != null) selected.add(data.getData());
         }
         ValueCallback<Uri[]> callback = pendingFiles;
         pendingFiles = null;
-        callback.onReceiveValue(uri == null ? null : new Uri[]{uri});
+        callback.onReceiveValue(selected.isEmpty() ? null : selected.toArray(new Uri[0]));
     }
 
     @Override public void onBackPressed() {
