@@ -10,7 +10,7 @@ Il s’agit d’un contrôle des fichiers et licences disponibles, sans certific
 
 ## Code original et dépôt public
 
-Le 26 octobre 2026, Zachiran42 a choisi la licence MIT pour le code original de Lisière Compact. Le fichier LICENSE à la racine en contient le texte. Cette autorisation couvre aussi le code original de la version 1.3.1 déjà publiée ; la licence est fournie comme fichier distinct avec cette publication sans modifier ni remplacer son APK signé. Les licences et attributions des bibliothèques tierces demeurent applicables. La licence du logiciel ne donne aucun droit supplémentaire sur les livres importés par les utilisateurs.
+À la demande du titulaire du dépôt, le code original de Lisière Compact est publié sous [licence MIT](../LICENSE). Cette licence permet son utilisation, sa modification et sa redistribution, y compris commerciale, avec conservation des mentions de droit d’auteur et du texte de licence. Les bibliothèques tierces conservent leurs propres licences ; cette décision ne modifie pas les droits sur les EPUB importés.
 
 Références :
 - [Licence MIT](https://opensource.org/license/mit)

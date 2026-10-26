@@ -6,4 +6,6 @@ Le document couvre les bibliothèques du lecteur et certaines dépendances appar
 
 JSZip est utilisé selon l’option MIT de sa double licence. Les notices Lucide comprennent la licence ISC ainsi que les mentions MIT de Feather. Les mentions MIT et Zlib de pako sont conservées.
 
-La version Android 1.3.1 contient aussi ces notices dans `assets/THIRD_PARTY_LICENSES.txt`. Une reconstruction du wrapper les embarque automatiquement. Le code original de Lisière Compact est sous [licence MIT](../LICENSE). Les licences des bibliothèques restent distinctes et leurs attributions sont conservées.
+La version Android 1.3.1 contient aussi ces notices dans `assets/THIRD_PARTY_LICENSES.txt`. Une reconstruction du wrapper les embarque automatiquement. Les licences des bibliothèques ne constituent pas une licence globale du code original de Lisière.
+
+Le code original de Lisière Compact est couvert séparément par la [licence MIT](../LICENSE). Les licences et attributions tierces restent applicables à leurs composants respectifs.
