@@ -7,3 +7,9 @@
 - Identifiant Android Compact conservé et version incrémentée à 1.3 (code 4).
 
 Le fichier HTML livré et les sources TypeScript récupérées sont distingués dans `docs/SOURCE-PROVENANCE.md`.
+
+## 1.3.1 — 26 octobre 2026
+
+- Ajout des licences et attributions tierces dans le dépôt et dans l’APK.
+- Identité Android inchangée, même clé de signature, code de version 5.
+- Interface et fonctionnalités de lecture identiques à la version 1.3.

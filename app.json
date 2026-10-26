@@ -2,7 +2,7 @@
   "expo": {
     "name": "Lisière Compact",
     "slug": "lisiere-compact",
-    "version": "1.3.0",
+    "version": "1.3.1",
     "orientation": "default",
     "userInterfaceStyle": "light",
     "scheme": "lisiere",
@@ -13,7 +13,7 @@
     "android": {
       "package": "app.lisiere.reader.compact",
       "edgeToEdgeEnabled": true,
-      "versionCode": 4
+      "versionCode": 5
     },
     "web": {
       "bundler": "metro",

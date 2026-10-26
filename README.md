@@ -73,3 +73,7 @@ Les clés de signature et leurs mots de passe sont conservés hors du dépôt. P
 Les gestes ont été vérifiés avec des événements tactiles synthétiques dans le navigateur, puis avec la sauvegarde et la réouverture du lecteur. Aucun essai tactile sur un téléphone Android réel n'a été effectué pour cette livraison. Les détails et la somme SHA-256 de l'APK sont dans [le rapport de validation](docs/VALIDATION-1.3.md).
 
 Les dépendances tierces conservent leurs licences et leurs notices. Aucune nouvelle licence globale n'est attribuée ici au code du projet ; voir [les notices de dépendances](docs/THIRD-PARTY-NOTICES.md).
+
+## Publication et notices
+
+La version Android **1.3.1** (code **5**) ajoute les notices complètes des bibliothèques dans l’APK ; le lecteur et l’interface restent ceux de la version 1.3. Voir [la vérification avant publication](docs/PUBLICATION.md) et les [licences tierces](THIRD_PARTY_LICENSES.txt). Aucune licence open source globale n’a encore été choisie pour le code original du projet.
