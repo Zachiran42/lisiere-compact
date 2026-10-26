@@ -23,3 +23,9 @@ Les sources récupérées ont été remises à niveau pour intégrer le pincemen
 Une reconstruction de ces sources peut donc différer visuellement de `web/index.html`. Le rapport de validation de la version 1.3 décrit les contrôles réalisés sur le HTML livré et l'APK de référence ; il ne prouve pas qu'une reconstruction future produit les mêmes octets.
 
 Les fichiers de travail locaux, journaux, bibliothèques personnelles, clés et mots de passe ne font pas partie du dépôt.
+
+## Évolution 1.4.0
+
+Le snapshot 1.3 est conservé sous `web/base-1.3.html` avec la somme indiquée ci-dessus. `scripts/build-web-features.cjs` vérifie cette somme, adapte les points d’import et l’entrée du catalogue, puis embarque les modules lisibles `web/features/`. Le résultat généré `web/index.html` est le HTML exact de l’APK 1.4.0. Cette voie de construction n’exige pas les dépendances Expo.
+
+Les nouveaux modules du catalogue Gutenberg et de l’import multiple sont donc publiés en code lisible et reproductible. Ils concernent l’interface Web embarquée ; les sources Expo récupérées restent une référence antérieure distincte. L’enveloppe Java mise à jour est aussi publiée intégralement, avec le transport Gutenberg et le sélecteur multiple.
