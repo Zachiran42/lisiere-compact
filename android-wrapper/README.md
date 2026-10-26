@@ -23,7 +23,7 @@ bash android-wrapper/build.sh
 unset LISIERE_KEYSTORE_PASSWORD LISIERE_KEY_PASSWORD
 ```
 
-Le résultat est `release/Lisiere-Compact-1.3.apk`, version Android 1.3, code 4, identifiant `app.lisiere.reader.compact`. L’activité conserve son nom Java complet `app.lisiere.reader.MainActivity`. Le script vérifie les signatures v2/v3 et l’alignement de l’APK. Les sorties locales de reconstruction sont ignorées par Git ; elles ne remplacent pas l’APK déjà distribué dans les téléchargements du projet.
+Le résultat est `release/Lisiere-Compact-1.3.1.apk`, version Android 1.3, code 4, identifiant `app.lisiere.reader.compact`. L’activité conserve son nom Java complet `app.lisiere.reader.MainActivity`. Le script vérifie les signatures v2/v3 et l’alignement de l’APK. Les sorties locales de reconstruction sont ignorées par Git ; elles ne remplacent pas l’APK déjà distribué dans les téléchargements du projet.
 
 Pour mettre à jour Compact 1.2 ou 1.3 en conservant la bibliothèque, utiliser **la même clé de signature Compact**. Une nouvelle clé produit une application incompatible avec la mise à jour de l’installation existante. Aucun keystore, mot de passe ou mécanisme de création automatique de clé n’est inclus dans le dépôt.
 
@@ -56,3 +56,5 @@ Désinstaller l’application ou effacer ses données supprime sa bibliothèque 
 Les signatures et l’alignement de l’APK 1.3 distribué ont été vérifiés. Les essais tactiles ont été simulés dans un navigateur ; un essai sur un téléphone Android réel reste nécessaire.
 
 Le script historique `fetch-sdk.py` est limité à Linux et nécessite un accès réseau autorisé. Pour les autres systèmes, installer Platform 35 et Build Tools 35.0.0 avec le gestionnaire officiel Android SDK, puis définir `LISIERE_ANDROID_SDK`.
+
+Le fichier `THIRD_PARTY_LICENSES.txt` à la racine du projet est embarqué dans les assets de l’APK.

@@ -7,7 +7,7 @@ LISIERE_SDK_ROOT="${LISIERE_ANDROID_SDK:-${ANDROID_SDK_ROOT:-${ANDROID_HOME:-/tm
 LISIERE_BUILD_TOOLS="$LISIERE_SDK_ROOT/build-tools/${LISIERE_BUILD_TOOLS_VERSION:-35.0.0}"
 LISIERE_PLATFORM_JAR="$LISIERE_SDK_ROOT/platforms/android-35/android.jar"
 LISIERE_WEB_HTML="${LISIERE_WEB_HTML:-$LISIERE_PROJECT_ROOT/web/index.html}"
-LISIERE_APK="$LISIERE_PROJECT_ROOT/release/Lisiere-Compact-1.3.apk"
+LISIERE_APK="$LISIERE_PROJECT_ROOT/release/Lisiere-Compact-1.3.1.apk"
 LISIERE_KEY_ALIAS="${LISIERE_KEY_ALIAS:-lisiere-compact}"
 LISIERE_PYTHON="${LISIERE_PYTHON:-python3}"
 LISIERE_JAVA="${JAVA_HOME:+$JAVA_HOME/bin/}java"
@@ -46,10 +46,11 @@ mkdir -p "$LISIERE_WRAPPER_ROOT/build" "$LISIERE_PROJECT_ROOT/release"
 LISIERE_BUILD="$(mktemp -d "$LISIERE_WRAPPER_ROOT/build/run.XXXXXX")"
 mkdir -p "$LISIERE_BUILD/assets" "$LISIERE_BUILD/classes" "$LISIERE_BUILD/dex" "$LISIERE_BUILD/generated"
 cp "$LISIERE_WEB_HTML" "$LISIERE_BUILD/assets/index.html"
+cp "$LISIERE_PROJECT_ROOT/THIRD_PARTY_LICENSES.txt" "$LISIERE_BUILD/assets/THIRD_PARTY_LICENSES.txt"
 "$LISIERE_AAPT2" compile --dir "$LISIERE_WRAPPER_ROOT/res" -o "$LISIERE_BUILD/resources.zip"
 "$LISIERE_AAPT2" link -o "$LISIERE_BUILD/resources.apk" -I "$LISIERE_PLATFORM_JAR" \
     --manifest "$LISIERE_WRAPPER_ROOT/AndroidManifest.xml" --java "$LISIERE_BUILD/generated" \
-    --version-code 4 --version-name 1.3 --min-sdk-version 24 --target-sdk-version 35 \
+    --version-code 5 --version-name 1.3.1 --min-sdk-version 24 --target-sdk-version 35 \
     -A "$LISIERE_BUILD/assets" "$LISIERE_BUILD/resources.zip"
 "$LISIERE_JAVAC" -encoding UTF-8 -source 8 -target 8 \
     -classpath "$LISIERE_PLATFORM_JAR" -d "$LISIERE_BUILD/classes" \
