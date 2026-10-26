@@ -13,3 +13,9 @@ Le fichier HTML livré et les sources TypeScript récupérées sont distingués 
 - Ajout des licences et attributions tierces dans le dépôt et dans l’APK.
 - Identité Android inchangée, même clé de signature, code de version 5.
 - Interface et fonctionnalités de lecture identiques à la version 1.3.
+
+## Licence — 26 octobre 2026
+
+- Publication du code original sous licence MIT.
+- Conservation des licences et notices des bibliothèques tierces.
+- Inclusion de la licence MIT dans les futures constructions Android.
