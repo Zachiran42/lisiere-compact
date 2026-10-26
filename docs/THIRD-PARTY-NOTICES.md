@@ -1,7 +1,9 @@
 # Dépendances et notices tierces
 
-Le projet utilise notamment React, React Native, React Native Web, Expo, React Native WebView, Lucide, JSZip, fast-xml-parser et htmlparser2. Les noms et versions de dépendances sont déclarés dans `package.json` et verrouillés dans `package-lock.json`.
+Les textes de licence et les mentions de droits des bibliothèques sont conservés dans [`THIRD_PARTY_LICENSES.txt`](../THIRD_PARTY_LICENSES.txt). L’inventaire [`DEPENDENCY-LICENSES.json`](DEPENDENCY-LICENSES.json) indique les versions, les archives npm et leur intégrité.
 
-Les bibliothèques tierces restent régies par leurs licences respectives. Leurs fichiers de licence sont fournis avec les paquets installés par npm. Les commentaires de licence présents dans le HTML autonome livré sont préservés, notamment les notices React (MIT) et lucide-react-native (ISC).
+Le document couvre les bibliothèques du lecteur et certaines dépendances apparentées de développement ; il ne signifie pas que tous les paquets recensés sont embarqués dans l’APK. Les archives npm ont été vérifiées contre le lockfile. Certains paquets de monorepos ne fournissent pas leur licence dans l’archive : leur texte provient du dépôt officiel indiqué dans le document.
 
-Ce document n'attribue pas de nouvelle licence au code ou aux contenus du projet et ne remplace pas les textes de licence des dépendances. Lors d'une redistribution ou d'une nouvelle compilation, conserver les notices des dépendances incluses dans l'artefact produit.
+JSZip est utilisé selon l’option MIT de sa double licence. Les notices Lucide comprennent la licence ISC ainsi que les mentions MIT de Feather. Les mentions MIT et Zlib de pako sont conservées.
+
+La version Android 1.3.1 contient aussi ces notices dans `assets/THIRD_PARTY_LICENSES.txt`. Une reconstruction du wrapper les embarque automatiquement. Les licences des bibliothèques ne constituent pas une licence globale du code original de Lisière.
