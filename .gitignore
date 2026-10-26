@@ -1,0 +1,50 @@
+# Dependencies and generated files
+node_modules/
+.expo/
+.expo-shared/
+coverage/
+*.log
+__pycache__/
+*.py[cod]
+.DS_Store
+Thumbs.db
+
+# Local configuration and secrets
+.env
+.env.*
+!.env.example
+*.keystore
+*.jks
+*.p12
+*.pfx
+*.pem
+*.key
+*.password
+*.password.txt
+credentials*.json
+secrets*.json
+
+# Local Android build outputs / signing settings
+.gradle/
+local.properties
+keystore.properties
+android/local.properties
+android/keystore.properties
+android/.gradle/
+android/app/build/
+android/build/
+
+# Distribute APKs with releases, not the source history
+*.apk
+*.aab
+*.apks
+*.idsig
+*.zip
+
+# Agent scratch material and local-only output
+/work/
+/outputs/
+
+# Android wrapper intermediates and standalone exports
+/android-wrapper/build/
+/release/

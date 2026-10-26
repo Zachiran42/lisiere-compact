@@ -1,0 +1,30 @@
+{
+  "expo": {
+    "name": "Lisière Compact",
+    "slug": "lisiere-compact",
+    "version": "1.3.0",
+    "orientation": "default",
+    "userInterfaceStyle": "light",
+    "scheme": "lisiere",
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "app.lisiere.reader.compact"
+    },
+    "android": {
+      "package": "app.lisiere.reader.compact",
+      "edgeToEdgeEnabled": true,
+      "versionCode": 4
+    },
+    "web": {
+      "bundler": "metro",
+      "lang": "fr",
+      "name": "Lisière Compact — Liseuse EPUB",
+      "shortName": "Lisière Compact",
+      "themeColor": "#234C3D",
+      "backgroundColor": "#F8F7F2"
+    },
+    "plugins": [
+      "expo-document-picker"
+    ]
+  }
+}
