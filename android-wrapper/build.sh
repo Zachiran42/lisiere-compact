@@ -47,6 +47,7 @@ LISIERE_BUILD="$(mktemp -d "$LISIERE_WRAPPER_ROOT/build/run.XXXXXX")"
 mkdir -p "$LISIERE_BUILD/assets" "$LISIERE_BUILD/classes" "$LISIERE_BUILD/dex" "$LISIERE_BUILD/generated"
 cp "$LISIERE_WEB_HTML" "$LISIERE_BUILD/assets/index.html"
 cp "$LISIERE_PROJECT_ROOT/THIRD_PARTY_LICENSES.txt" "$LISIERE_BUILD/assets/THIRD_PARTY_LICENSES.txt"
+cp "$LISIERE_PROJECT_ROOT/LICENSE" "$LISIERE_BUILD/assets/LICENSE"
 "$LISIERE_AAPT2" compile --dir "$LISIERE_WRAPPER_ROOT/res" -o "$LISIERE_BUILD/resources.zip"
 "$LISIERE_AAPT2" link -o "$LISIERE_BUILD/resources.apk" -I "$LISIERE_PLATFORM_JAR" \
     --manifest "$LISIERE_WRAPPER_ROOT/AndroidManifest.xml" --java "$LISIERE_BUILD/generated" \

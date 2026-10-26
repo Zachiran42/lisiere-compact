@@ -10,7 +10,7 @@ Il s’agit d’un contrôle des fichiers et licences disponibles, sans certific
 
 ## Code original et dépôt public
 
-Aucune licence open source globale n’a été choisie pour le code original du projet. Rendre le dépôt public permet sa consultation et les fonctionnalités de copie prévues par GitHub ; cela n’accorde pas automatiquement une licence générale de réutilisation. Les licences des bibliothèques tierces demeurent applicables.
+Le 26 octobre 2026, Zachiran42 a choisi la licence MIT pour le code original de Lisière Compact. Le fichier LICENSE à la racine en contient le texte. Cette autorisation couvre aussi le code original de la version 1.3.1 déjà publiée ; la licence est fournie comme fichier distinct avec cette publication sans modifier ni remplacer son APK signé. Les licences et attributions des bibliothèques tierces demeurent applicables. La licence du logiciel ne donne aucun droit supplémentaire sur les livres importés par les utilisateurs.
 
 Références :
 - [Licence MIT](https://opensource.org/license/mit)

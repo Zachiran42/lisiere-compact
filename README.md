@@ -8,7 +8,7 @@ Ce dépôt réunit les sources Expo/React Native récupérées du projet et l'in
 
 Pendant la lecture, écarter deux doigts pour agrandir les caractères ou les rapprocher pour les réduire. Le défilement à un doigt reste disponible, ainsi que les réglages de taille, police, interligne et ambiance.
 
-L'APK de référence est `Lisiere-Compact-1.3.apk` : version Android `1.3`, code `4`, identifiant `app.lisiere.reader.compact`. Il peut mettre à jour Compact 1.2 avec la même signature. L'ancienne application Lisière 1.1 utilise un autre identifiant et reste distincte.
+L'APK actuel est Lisiere-Compact-1.3.1.apk : version Android 1.3.1, code 5, identifiant `app.lisiere.reader.compact`. Il peut mettre à jour Compact 1.2 avec la même signature. L'ancienne application Lisière 1.1 utilise un autre identifiant et reste distincte.
 
 Les EPUB à texte adaptable, sans DRM, sont pris en charge. Les livres et la progression sont conservés sur l'appareil ; garder une copie des EPUB permet de les réimporter si les données de l'application sont effacées.
 
@@ -72,8 +72,8 @@ Les clés de signature et leurs mots de passe sont conservés hors du dépôt. P
 
 Les gestes ont été vérifiés avec des événements tactiles synthétiques dans le navigateur, puis avec la sauvegarde et la réouverture du lecteur. Aucun essai tactile sur un téléphone Android réel n'a été effectué pour cette livraison. Les détails et la somme SHA-256 de l'APK sont dans [le rapport de validation](docs/VALIDATION-1.3.md).
 
-Les dépendances tierces conservent leurs licences et leurs notices. Aucune nouvelle licence globale n'est attribuée ici au code du projet ; voir [les notices de dépendances](docs/THIRD-PARTY-NOTICES.md).
+Le code original de Lisière Compact est publié sous [licence MIT](LICENSE), au choix de Zachiran42. Les dépendances tierces conservent leurs licences et leurs notices ; voir [les notices de dépendances](docs/THIRD-PARTY-NOTICES.md).
 
 ## Publication et notices
 
-La version Android **1.3.1** (code **5**) ajoute les notices complètes des bibliothèques dans l’APK ; le lecteur et l’interface restent ceux de la version 1.3. Voir [la vérification avant publication](docs/PUBLICATION.md) et les [licences tierces](THIRD_PARTY_LICENSES.txt). Aucune licence open source globale n’a encore été choisie pour le code original du projet.
+La version Android **1.3.1** (code **5**) ajoute les notices complètes des bibliothèques dans l’APK ; le lecteur et l’interface restent ceux de la version 1.3. Voir [la vérification avant publication](docs/PUBLICATION.md) et les [licences tierces](THIRD_PARTY_LICENSES.txt). Le code original est désormais sous licence MIT. La licence accompagne aussi l’APK 1.3.1 comme fichier distinct dans sa publication GitHub ; le fichier APK signé reste inchangé.
