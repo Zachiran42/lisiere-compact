@@ -29,3 +29,10 @@ Les fichiers de travail locaux, journaux, bibliothèques personnelles, clés et 
 Le snapshot 1.3 est conservé sous `web/base-1.3.html` avec la somme indiquée ci-dessus. `scripts/build-web-features.cjs` vérifie cette somme, adapte les points d’import et l’entrée du catalogue, puis embarque les modules lisibles `web/features/`. Le résultat généré `web/index.html` est le HTML exact de l’APK 1.4.0. Cette voie de construction n’exige pas les dépendances Expo.
 
 Les nouveaux modules du catalogue Gutenberg et de l’import multiple sont donc publiés en code lisible et reproductible. Ils concernent l’interface Web embarquée ; les sources Expo récupérées restent une référence antérieure distincte. L’enveloppe Java mise à jour est aussi publiée intégralement, avec le transport Gutenberg et le sélecteur multiple.
+
+
+## Évolution 1.5.0
+
+`web/features/library.js` et `library.css` contiennent la grille de couvertures et le choix de présentation. Le script de construction les intègre au même snapshot de référence. Le champ `settings.libraryView` (`covers` ou `spines`) est enregistré dans le manifeste IndexedDB existant ; aucune migration ni suppression de livres n’est nécessaire. Une préférence absente correspond à la vue couvertures. Le lecteur continue de transmettre l’ensemble des réglages lors des changements de taille ou de thème.
+
+Les sources Expo de référence restent distinctes de cette interface Web distribuée. Le HTML autonome généré et l’enveloppe Java sont les sources de la construction APK 1.5.0.
