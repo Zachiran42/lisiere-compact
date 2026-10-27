@@ -2,7 +2,9 @@
 
 Liseuse EPUB en français : bibliothèque locale, favoris, marque-pages, barres compactes et pincement à deux doigts pour régler la taille des caractères.
 
-La version **1.4.0** ajoute :
+La version **1.5.0** ajoute le choix **Couvertures / Tranches** dans **Réglages → Votre bibliothèque**. Les couvertures s’affichent par défaut, sans recadrage. Un livre sans image garde une couverture illustrée avec son titre ; la préférence est mémorisée et s’applique aussi aux favoris.
+
+La version 1.4.0 a ajouté :
 
 - **Livres gratuits** : recherche par titre ou auteur dans le catalogue officiel du Projet Gutenberg, filtre de langue, pagination et téléchargement d’un EPUB directement dans la bibliothèque.
 - **Import local multiple** : sélection de plusieurs fichiers EPUB en une fois, détection des doublons et récapitulatif des fichiers importés ou en erreur. Une erreur ne bloque pas les autres fichiers.
@@ -11,7 +13,7 @@ Les livres importés se lisent ensuite hors ligne, sans compte. Pour agrandir le
 
 ## Installer
 
-Télécharger l’APK dans les [releases](https://github.com/Zachiran42/lisiere-compact/releases). La version 1.4.0 porte le code Android 6 et l’identifiant `app.lisiere.reader.compact`. Elle met à jour Compact 1.2, 1.3 et 1.3.1 avec le même certificat : installer par-dessus, sans désinstaller, pour conserver la bibliothèque.
+Télécharger l’APK dans les [releases](https://github.com/Zachiran42/lisiere-compact/releases). La version 1.5.0 porte le code Android 7 et l’identifiant `app.lisiere.reader.compact`. Elle met à jour Compact 1.2, 1.3, 1.3.1 et 1.4.0 avec le même certificat : installer par-dessus, sans désinstaller, pour conserver la bibliothèque.
 
 L’application Lisière 1.1 d’origine utilise un identifiant différent. Ses livres ne sont pas transférés automatiquement. Garder une copie des EPUB : effacer les données ou désinstaller l’application supprime sa bibliothèque.
 
@@ -34,13 +36,14 @@ Ouvrir `http://127.0.0.1:8768/web/index.html`. Ce serveur local fournit aussi le
 | `web/base-1.3.html` | Interface de référence 1.3, avec bibliothèque à tranches et lecteur à pincement |
 | `web/features/imports.js` | Import multiple, empreinte des livres et détection des doublons |
 | `web/features/gutenberg.js` | Recherche, lecture des flux OPDS et limites des téléchargements |
+| `web/features/library.js`, `library.css` | Grille de couvertures et réglage de présentation mémorisé |
 | `web/features/catalogue.js` | Catalogue et récapitulatif accessibles, sans dépendance ajoutée |
 | `scripts/build-web-features.cjs` | Intégration reproductible des modules lisibles au bundle de référence |
 | `web/index.html` | HTML autonome généré et embarqué dans l’APK |
 | `android-wrapper/` | WebView Android, sélecteur multiple et transport HTTPS Gutenberg |
 | `scripts/build-android.py` | Construction et signature Android, Windows/macOS/Linux |
 | `tests/` | Tests du lecteur, du parseur EPUB, des imports et du transport |
-| `docs/VALIDATION-1.4.md` | Vérifications et limites de la livraison |
+| `docs/VALIDATION-1.5.md` | Vérifications et limites de la livraison |
 
 Voir [la provenance des sources](docs/SOURCE-PROVENANCE.md). `App.tsx` et `src/` sont également conservés : ils proviennent d’une interface Expo antérieure. Un export Expo ne reproduit pas le HTML actuellement distribué et n’inclut pas les modules du catalogue 1.4. Pour développer cette référence Expo : `npm ci`, `npm run web`, `npm test` et `npm run typecheck`.
 
@@ -52,7 +55,7 @@ JDK 17, Python 3.11+, Android SDK Platform 35 et Build Tools 35.0.0. Définir `J
 python scripts/build-android.py
 ```
 
-Le résultat est `release/Lisiere-Compact-1.4.0.apk`. Les signatures v2/v3 et l’alignement sont vérifiés. Utiliser la même clé privée pour mettre à jour une installation existante. Aucun secret ni clé de signature n’est publié. Plus de détails : [enveloppe Android](android-wrapper/README.md).
+Le résultat est `release/Lisiere-Compact-1.5.0.apk`. Les signatures v2/v3 et l’alignement sont vérifiés. Utiliser la même clé privée pour mettre à jour une installation existante. Aucun secret ni clé de signature n’est publié. Plus de détails : [enveloppe Android](android-wrapper/README.md).
 
 ## Catalogue et confidentialité
 

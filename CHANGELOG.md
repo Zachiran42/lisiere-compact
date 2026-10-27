@@ -27,3 +27,11 @@ Le fichier HTML livré et les sources TypeScript récupérées sont distingués 
 - Transport HTTPS Android limité aux flux et fichiers Gutenberg, avec limites de taille et de durée. Ouverture des fiches dans le navigateur externe.
 - Code lisible des fonctionnalités Web, script de génération depuis le snapshot livré et script de construction Android portable.
 - Même identité et même certificat Compact ; version Android 1.4.0, code 6.
+
+
+## 1.5.0 — 27 octobre 2026
+
+- Affichage des couvertures dans une grille adaptée au téléphone et au bureau, avec titre, auteur et progression. Les images ne sont pas recadrées.
+- Choix Couvertures / Tranches dans Réglages → Votre bibliothèque, mémorisé sur l’appareil et appliqué aussi aux favoris.
+- Couvertures par défaut pour les bibliothèques existantes sans préférence ; couverture illustrée de remplacement si l’image manque ou ne peut pas être chargée.
+- Même identité et même certificat Compact ; version Android 1.5.0, code 7.
