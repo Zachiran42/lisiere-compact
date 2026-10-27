@@ -34,7 +34,7 @@ for name in ('assets', 'classes', 'dex', 'generated'): (build / name).mkdir()
 for source, name in ((root / 'web/index.html', 'index.html'), (root / 'LICENSE', 'LICENSE'), (root / 'THIRD_PARTY_LICENSES.txt', 'THIRD_PARTY_LICENSES.txt')):
     shutil.copyfile(source, build / 'assets' / name)
 run(aapt, 'compile', '--dir', wrapper / 'res', '-o', build / 'resources.zip')
-run(aapt, 'link', '-o', build / 'resources.apk', '-I', platform, '--manifest', wrapper / 'AndroidManifest.xml', '--java', build / 'generated', '--version-code', '6', '--version-name', '1.4.0', '--min-sdk-version', '24', '--target-sdk-version', '35', '-A', build / 'assets', build / 'resources.zip')
+run(aapt, 'link', '-o', build / 'resources.apk', '-I', platform, '--manifest', wrapper / 'AndroidManifest.xml', '--java', build / 'generated', '--version-code', '7', '--version-name', '1.5.0', '--min-sdk-version', '24', '--target-sdk-version', '35', '-A', build / 'assets', build / 'resources.zip')
 run(javac, '-encoding', 'UTF-8', '-source', '8', '-target', '8', '-classpath', platform, '-d', build / 'classes', *sorted((wrapper / 'src').rglob('*.java')), *sorted((build / 'generated').rglob('*.java')))
 with zipfile.ZipFile(build / 'classes.jar', 'w', zipfile.ZIP_DEFLATED) as output:
     for file in sorted((build / 'classes').rglob('*.class')): output.write(file, file.relative_to(build / 'classes').as_posix())
@@ -44,7 +44,7 @@ with zipfile.ZipFile(build / 'unsigned.apk', 'a', zipfile.ZIP_DEFLATED) as outpu
     for file in sorted((build / 'dex').glob('*.dex')): output.write(file, file.name)
 run(align, '-f', '-p', '4', build / 'unsigned.apk', build / 'aligned.apk')
 (root / 'release').mkdir(exist_ok=True)
-apk = root / 'release/Lisiere-Compact-1.4.0.apk'
+apk = root / 'release/Lisiere-Compact-1.5.0.apk'
 run(java, '-jar', tools / 'lib/apksigner.jar', 'sign', '--ks', key, '--ks-key-alias', os.environ.get('LISIERE_KEY_ALIAS', 'lisiere-compact'), '--ks-pass', 'env:LISIERE_KEYSTORE_PASSWORD', '--key-pass', 'env:LISIERE_KEY_PASSWORD', '--v1-signing-enabled', 'false', '--v2-signing-enabled', 'true', '--v3-signing-enabled', 'true', '--v4-signing-enabled', 'false', '--out', apk, build / 'aligned.apk')
 run(java, '-jar', tools / 'lib/apksigner.jar', 'verify', '--verbose', '--print-certs', apk)
 run(align, '-c', '-p', '4', apk)

@@ -30,18 +30,25 @@ const oldImport = app.slice(app.indexOf('ce=async()=>'), app.indexOf(',ue=I.book
 app = replaceOnce(app, oldImport, `ce=async()=>{if(!oe){ie(true);try{const result=await j.pickEpubs();if(result)acceptImportedBooks(result)}catch(error){le(error instanceof Error?error.message:'Impossible d’importer ces livres.')}finally{ie(false)}}}`);
 const catalogue = `'library'===M?(0,z.jsxs)(s.default,{accessibilityRole:'button',accessibilityLabel:'Explorer les livres gratuits du Projet Gutenberg',disabled:oe,onPress:()=>window.LisiereFeatures.openCatalogue({onImport:async bytes=>{const book=await j.importEpubBytes(bytes);return acceptImportedBooks({books:[book],errors:[]},false)}}),style:[L.resumeStrip,{marginTop:14,paddingVertical:12}],children:[(0,z.jsx)(x.BookOpen,{size:20,color:C.colors.green}),(0,z.jsx)(c.default,{style:{flex:1,fontSize:13,color:C.colors.green},children:'Explorer les livres gratuits'}),(0,z.jsx)(x.ArrowRight,{size:18,color:C.colors.green})]}):null,`;
 app = replaceOnce(app, ",'library'===M&&ge?.lastOpenedAt", ',' + catalogue + "'library'===M&&ge?.lastOpenedAt");
-app = replaceOnce(app, 'VERSION 1.3 COMPACT', 'VERSION 1.4.0 COMPACT');
+// The display preference is stored with the existing reading settings in IndexedDB.
+app = replaceOnce(app, 'z=r(d[22]);function R', 'z=r(d[22]);const libraryUI=window.LisiereLibrary.create(t,S.default);function R');
+app = replaceOnce(app, '(0,z.jsx)(w.default,{books:he,', "(0,z.jsx)(window.LisiereLibrary.getView(I.settings)==='covers'?libraryUI.Covers:w.default,{progress:v.bookProgress,books:he,");
+app = replaceOnce(app, "'Touchez une tranche pour d\\xe9couvrir sa couverture.'", "(window.LisiereLibrary.getView(I.settings)==='covers'?'Touchez une couverture pour retrouver votre livre.':'Touchez une tranche pour d\\xe9couvrir sa couverture.')");
+app = replaceOnce(app, '(0,z.jsxs)(f.default,{style:L.settingsCard,children:', '(0,z.jsx)(libraryUI.ViewSettings,{settings:e,onChange:t}),(0,z.jsxs)(f.default,{style:L.settingsCard,children:');
+app = replaceOnce(app, 'VERSION 1.3 COMPACT', 'VERSION 1.5.0 COMPACT');
 app = replaceOnce(app, 'Importer un EPUB', 'Importer des EPUB');
 app = replaceOnce(app, 'Importer un livre', 'Importer des livres');
 
 html = html.slice(0, start) + app + html.slice(end);
 html = replaceOnce(html, 'Ajouter un fichier EPUB', 'Ajouter des fichiers EPUB');
-const features = ['imports.js', 'gutenberg.js', 'catalogue.js'].map(name => {
+const features = ['imports.js', 'gutenberg.js', 'catalogue.js', 'library.js'].map(name => {
   const source = fs.readFileSync(path.join(root, 'web/features', name), 'utf8').replace(/^\uFEFF/, '');
   if (/<\/script/i.test(source)) throw Error('Unescaped script closing tag in ' + name);
   return '<script>\n' + source + '\n</script>';
 }).join('\n');
-html = html.replace('</head>', features + '\n</head>');
+const libraryCss = fs.readFileSync(path.join(root, 'web/features/library.css'), 'utf8').replace(/^\uFEFF/, '');
+if (/<\/style/i.test(libraryCss)) throw Error('Invalid library stylesheet');
+html = html.replace('</head>', '<style>\n' + libraryCss + '\n</style>\n' + features + '\n</head>');
 fs.writeFileSync(path.join(root, 'web/index.html'), html);
 console.log('Built web/index.html:', crypto.createHash('sha256').update(html).digest('hex'));
 
