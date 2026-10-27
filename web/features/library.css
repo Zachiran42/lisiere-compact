@@ -1,0 +1,28 @@
+/* SPDX-License-Identifier: MIT — Copyright (c) 2026 Zachiran42. */
+.lc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(144px,1fr));gap:28px 22px;align-items:start;margin-top:10px;margin-bottom:24px;max-width:1100px}
+.lc-item{min-width:0;margin:0;padding:0;max-width:220px}
+.lc-card{display:flex;flex-direction:column;align-items:stretch;width:100%;padding:0;border:0;border-radius:5px;background:transparent;color:#273b31;text-align:left;font:inherit;cursor:pointer;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+.lc-art{display:block;position:relative;width:100%;height:0;padding-bottom:150%;overflow:hidden;border-radius:5px;background:#eceee5;box-shadow:1px 5px 12px #253b301c;transition:box-shadow .15s ease}
+.lc-card:hover .lc-art{box-shadow:1px 7px 18px #253b3033}
+.lc-card:focus-visible{outline:3px solid #6d8953;outline-offset:6px}
+.lc-art-inner{position:absolute;inset:0;display:flex}
+.lc-cover-image{position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:contain}
+.lc-book-title{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;overflow-wrap:anywhere;margin-top:12px;font:16px/1.35 Georgia,serif}
+.lc-book-author{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;overflow-wrap:anywhere;margin-top:5px;color:#7d837b;font:11px/1.5 system-ui,sans-serif}
+.lc-progress{margin-top:7px;color:#6b795e;font:10px/1.5 system-ui,sans-serif}
+.lc-favorite{position:absolute;right:8px;top:8px;display:grid;place-items:center;width:26px;height:26px;border-radius:50%;background:#f8f7f2ed;color:#345945;font-size:15px;box-shadow:0 1px 4px #0002}
+.lc-add-art{box-sizing:content-box;box-shadow:none;outline:1px dashed #b6c1ab;outline-offset:-1px;background:#f0f2e9}
+.lc-add-inner{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;color:#63765b;font:12px/1.5 system-ui,sans-serif;padding:15px;text-align:center}
+.lc-plus{display:grid;place-items:center;width:42px;height:42px;border-radius:50%;background:#e2e8d8;font:28px/1 system-ui,sans-serif;font-weight:300}
+.lc-card:disabled{cursor:default;opacity:.6}
+.lc-settings{margin-top:30px;padding:25px;border:1px solid #e5e7de;border-radius:12px;background:#fffefa;color:#273b31;font:12px/1.6 system-ui,sans-serif}
+.lc-settings h2{font:25px/1.3 Georgia,serif;margin:0}
+.lc-settings p{color:#7d837b;margin:8px 0 20px}
+.lc-choices{border:0;padding:0;margin:0;display:grid;grid-template-columns:1fr 1fr;gap:12px;min-width:0}
+.lc-choice{display:flex;position:relative;align-items:center;flex-direction:column;gap:8px;border:2px solid #e5e7de;border-radius:8px;padding:14px 8px;color:#273b31;cursor:pointer;min-width:0;font-size:13px}
+.lc-choice input{position:absolute;right:10px;top:10px;accent-color:#234c3d;width:16px;height:16px;cursor:pointer}
+.lc-selected{border-color:#234c3d;background:#e9eedf}
+.lc-choice:focus-within{outline:3px solid #899e69;outline-offset:3px}
+.lc-sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+@media(max-width:600px){.lc-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:26px 18px}.lc-item{max-width:none}.lc-book-title{font-size:15px}.lc-settings{padding:22px}.lc-choice{padding-top:20px}}
+@media(prefers-reduced-motion:reduce){.lc-art{transition:none}}
