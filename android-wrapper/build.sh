@@ -7,7 +7,7 @@ LISIERE_SDK_ROOT="${LISIERE_ANDROID_SDK:-${ANDROID_SDK_ROOT:-${ANDROID_HOME:-/tm
 LISIERE_BUILD_TOOLS="$LISIERE_SDK_ROOT/build-tools/${LISIERE_BUILD_TOOLS_VERSION:-35.0.0}"
 LISIERE_PLATFORM_JAR="$LISIERE_SDK_ROOT/platforms/android-35/android.jar"
 LISIERE_WEB_HTML="${LISIERE_WEB_HTML:-$LISIERE_PROJECT_ROOT/web/index.html}"
-LISIERE_APK="$LISIERE_PROJECT_ROOT/release/Lisiere-Compact-1.4.0.apk"
+LISIERE_APK="$LISIERE_PROJECT_ROOT/release/Lisiere-Compact-1.5.0.apk"
 LISIERE_KEY_ALIAS="${LISIERE_KEY_ALIAS:-lisiere-compact}"
 LISIERE_PYTHON="${LISIERE_PYTHON:-python3}"
 LISIERE_JAVA="${JAVA_HOME:+$JAVA_HOME/bin/}java"
@@ -51,7 +51,7 @@ cp "$LISIERE_PROJECT_ROOT/LICENSE" "$LISIERE_BUILD/assets/LICENSE"
 "$LISIERE_AAPT2" compile --dir "$LISIERE_WRAPPER_ROOT/res" -o "$LISIERE_BUILD/resources.zip"
 "$LISIERE_AAPT2" link -o "$LISIERE_BUILD/resources.apk" -I "$LISIERE_PLATFORM_JAR" \
     --manifest "$LISIERE_WRAPPER_ROOT/AndroidManifest.xml" --java "$LISIERE_BUILD/generated" \
-    --version-code 6 --version-name 1.4.0 --min-sdk-version 24 --target-sdk-version 35 \
+    --version-code 7 --version-name 1.5.0 --min-sdk-version 24 --target-sdk-version 35 \
     -A "$LISIERE_BUILD/assets" "$LISIERE_BUILD/resources.zip"
 "$LISIERE_JAVAC" -encoding UTF-8 -source 8 -target 8 \
     -classpath "$LISIERE_PLATFORM_JAR" -d "$LISIERE_BUILD/classes" \

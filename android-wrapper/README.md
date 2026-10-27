@@ -1,4 +1,4 @@
-# Enveloppe Android — Lisière Compact 1.4.0
+# Enveloppe Android — Lisière Compact 1.5.0
 
 L’activité Java charge `web/index.html` sur l’origine locale `https://appassets.androidplatform.net`. Le stockage IndexedDB conserve la bibliothèque et les réglages sur l’appareil. L’import utilise `ACTION_OPEN_DOCUMENT` avec sélection multiple et restitue toutes les URI choisies.
 
@@ -24,7 +24,7 @@ python scripts/build-android.py
 
 Pour un SDK extrait manuellement, `LISIERE_BUILD_TOOLS` et `LISIERE_PLATFORM_JAR` permettent d’indiquer les chemins exacts. Le script Bash historique reste utilisable avec `bash android-wrapper/build.sh` et les mêmes variables de signature ; il attend la disposition standard du SDK et accepte `LISIERE_WEB_HTML`.
 
-Le résultat est `release/Lisiere-Compact-1.4.0.apk`, code 6, identifiant `app.lisiere.reader.compact`, activité `app.lisiere.reader.MainActivity`, Android minimum 24, cible 35. Les signatures v2/v3 et l’alignement sont contrôlés. Les notices MIT et tierces sont embarquées dans les assets. Les intermédiaires `android-wrapper/build/` et les APK `release/` sont ignorés par Git.
+Le résultat est `release/Lisiere-Compact-1.5.0.apk`, code 7, identifiant `app.lisiere.reader.compact`, activité `app.lisiere.reader.MainActivity`, Android minimum 24, cible 35. Les signatures v2/v3 et l’alignement sont contrôlés. Les notices MIT et tierces sont embarquées dans les assets. Les intermédiaires `android-wrapper/build/` et les APK `release/` sont ignorés par Git.
 
 Aucun mécanisme ne crée ou publie automatiquement une clé. La même signature Compact est indispensable pour installer une mise à jour sans désinstaller. L’ancienne application `app.lisiere.reader` reste distincte.
 
