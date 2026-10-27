@@ -42,7 +42,7 @@ public final class GutenbergClient {
             HttpURLConnection connection = (HttpURLConnection) new URL(uri.toString()).openConnection();
             connection.setInstanceFollowRedirects(false);
             connection.setConnectTimeout(10000); connection.setReadTimeout(15000);
-            connection.setRequestProperty("User-Agent", "Lisiere-Compact/1.4.0 (OPDS reader; https://github.com/Zachiran42/lisiere-compact)");
+            connection.setRequestProperty("User-Agent", "Lisiere-Compact/1.5.0 (OPDS reader; https://github.com/Zachiran42/lisiere-compact)");
             connection.setRequestProperty("Accept", "application/atom+xml, application/epub+zip");
             connection.setRequestProperty("Accept-Encoding", "identity");
             try {
